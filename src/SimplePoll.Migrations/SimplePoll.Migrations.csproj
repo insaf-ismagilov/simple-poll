@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="dbup-core" Version="4.4.0" />
+      <PackageReference Include="dbup-postgresql" Version="4.4.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.9" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="3.1.9" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.9" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Functions" />
+      <Folder Include="Indexes" />
+      <Folder Include="Patches" />
+      <Folder Include="Tables" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Tables\001_UserRoles.sql" />
+      <EmbeddedResource Include="Tables\001_UserRoles.sql" />
+      <None Remove="Data\001_UserRoles.sql" />
+      <EmbeddedResource Include="Data\001_UserRoles.sql" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="appsettings.json" />
+      <Content Include="appsettings.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+</Project>
