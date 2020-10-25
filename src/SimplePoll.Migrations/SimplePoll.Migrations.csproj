@@ -25,6 +25,12 @@
       <EmbeddedResource Include="Tables\001_UserRoles.sql" />
       <None Remove="Data\001_UserRoles.sql" />
       <EmbeddedResource Include="Data\001_UserRoles.sql" />
+      <None Remove="Data\002_Users.sql" />
+      <EmbeddedResource Include="Data\002_Users.sql" />
+      <None Remove="Tables\002_Users.sql" />
+      <EmbeddedResource Include="Tables\002_Users.sql" />
+      <None Remove="Functions\001_Users_GetById.sql" />
+      <EmbeddedResource Include="Functions\001_Users_GetById.sql" />
     </ItemGroup>
 
     <ItemGroup>

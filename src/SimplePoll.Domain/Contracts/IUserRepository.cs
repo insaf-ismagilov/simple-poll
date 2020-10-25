@@ -5,7 +5,7 @@ namespace SimplePoll.Domain.Contracts
 {
 	public interface IUserRepository
 	{
-		Task<User> GetAsync(int id);
+		Task<User> GetByIdAsync(int id);
 		Task<int> AddAsync(User user);
 		Task<int?> UpdateAsync(User user);
 	}
