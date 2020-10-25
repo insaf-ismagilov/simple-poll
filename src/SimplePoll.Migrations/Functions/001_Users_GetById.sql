@@ -1,35 +1,35 @@
-CREATE OR REPLACE FUNCTION public.users_getbyid(
+CREATE OR REPLACE FUNCTION public.users_get_by_id(
     p_id int
 )
     RETURNS table
             (
                 id                      int,
-                roleid                 int,
-                rolename               text,
-                rolecreated_date       timestamp,
-                rolelast_modified_date timestamp,
+                role_id                 int,
+                role_name               text,
+                role_created_date       timestamp,
+                role_last_modified_date timestamp,
                 email                   text,
-                passwordhash           text,
-                firstname              text,
-                lastname               text,
-                createddate            timestamp,
-                lastmodifieddate      timestamp
+                password_hash           text,
+                first_name              text,
+                last_name               text,
+                created_date            timestamp,
+                last_modified_date      timestamp
             )
     LANGUAGE sql
 AS
 $$
 SELECT u.id,
-       ur.id                 AS roleid,
-       ur.name               AS rolename,
-       ur.createddate       AS rolecreateddate,
-       ur.lastmodifieddate AS rolelastmodifieddate,
+       ur.id                 AS role_id,
+       ur.name               AS role_name,
+       ur.created_date       AS role_created_date,
+       ur.last_modified_date AS role_last_modified_date,
        u.email,
-       u.passwordhash,
-       u.firstname,
-       u.lastname,
-       u.createddate,
-       u.lastmodifieddate
+       u.password_hash,
+       u.first_name,
+       u.last_name,
+       u.created_date,
+       u.last_modified_date
 FROM public.users u
-         INNER JOIN public.userroles ur on ur.id = u.roleid
+         INNER JOIN public.user_roles ur on ur.id = u.role_id
 WHERE u.id = p_id;
 $$;

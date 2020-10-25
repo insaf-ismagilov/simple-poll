@@ -1,9 +1,9 @@
-CREATE TABLE IF NOT EXISTS public.userroles
+CREATE TABLE IF NOT EXISTS public.user_roles
 (
-    id               int                         NOT NULL,
-    name             varchar                     NOT NULL,
-    createddate      timestamp without time zone NOT NULL DEFAULT timezone('utc'::text, now()),
-    lastmodifieddate timestamp without time zone NOT NULL DEFAULT timezone('utc'::text, now()),
+    id                 int                         NOT NULL,
+    name               varchar                     NOT NULL,
+    created_date       timestamp without time zone NOT NULL DEFAULT timezone('utc'::text, now()),
+    last_modified_date timestamp without time zone NOT NULL DEFAULT timezone('utc'::text, now()),
 
     CONSTRAINT user_roles_pk PRIMARY KEY (id)
 )

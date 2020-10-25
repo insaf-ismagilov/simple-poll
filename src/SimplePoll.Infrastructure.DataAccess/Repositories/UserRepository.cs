@@ -21,7 +21,7 @@ namespace SimplePoll.Infrastructure.DataAccess.Repositories
 		
 		public async Task<User> GetByIdAsync(int id)
 		{
-			var userRecord = await _databaseRepository.GetAsync<UserRecord>("public.users_getbyid", 
+			var userRecord = await _databaseRepository.GetAsync<UserRecord>("public.users_get_by_id", 
 				DbParameterHelper.Create(nameof(id), id));
 
 			return _mapper.Map<User>(userRecord);

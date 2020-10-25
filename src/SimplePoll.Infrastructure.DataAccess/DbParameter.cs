@@ -1,4 +1,6 @@
-﻿namespace SimplePoll.Infrastructure.DataAccess
+﻿using System.Linq;
+
+namespace SimplePoll.Infrastructure.DataAccess
 {
 	public class DbParameter
 	{
@@ -9,8 +11,13 @@
 
 		public DbParameter(string name, object value)
 		{
-			Name = Prefix + name.ToLower();
+			Name = Prefix + ToUnderscoreCase(name);
 			Value = value;
+		}
+
+		private static string ToUnderscoreCase(string str)
+		{
+			return string.Concat(str.Select((x, i) => i > 0 && char.IsUpper(x) ? "_" + x : x.ToString())).ToLower();
 		}
 	}
 }

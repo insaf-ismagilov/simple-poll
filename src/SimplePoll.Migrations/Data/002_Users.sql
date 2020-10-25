@@ -1,2 +1,2 @@
-INSERT INTO public.users (roleid, email, firstname, lastname)
+INSERT INTO public.users (role_id, email, first_name, last_name)
 VALUES (0, 'admin@example.com', 'Admin', 'Admin');
