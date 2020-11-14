@@ -1,7 +1,7 @@
-DROP FUNCTION IF EXISTS public.users_get_by_id;
+DROP FUNCTION IF EXISTS public.users_get_by_email;
 
-CREATE OR REPLACE FUNCTION public.users_get_by_id(
-    p_id int
+CREATE OR REPLACE FUNCTION public.users_get_by_email(
+    p_email text
 )
     RETURNS table
             (
@@ -33,5 +33,5 @@ SELECT u.id,
        u.last_modified_date
 FROM public.users u
          INNER JOIN public.user_roles ur on ur.id = u.role_id
-WHERE u.id = p_id;
+WHERE u.email = p_email;
 $$;

@@ -30,12 +30,12 @@ namespace SimplePoll.Infrastructure.DataAccess
 			return await connection.QueryAsync<T>(functionName, GetParameters(paramaters), null, null, CommandType.StoredProcedure);
 		}
 
-		public async Task ExecuteAsync(string functionName, params DbParameter[] paramaters)
+		public async Task<int> ExecuteAsync(string functionName, params DbParameter[] paramaters)
 		{
 			using var connection = _databaseConnectionProvider.Create();
 			connection.Open();
 			
-			await connection.ExecuteAsync(functionName, GetParameters(paramaters), null, null, CommandType.StoredProcedure);
+			return await connection.ExecuteAsync(functionName, GetParameters(paramaters), null, null, CommandType.StoredProcedure);
 		}
 
 		private static object GetParameters(params DbParameter[] parameters)

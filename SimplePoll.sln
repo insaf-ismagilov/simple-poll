@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePoll.Infrastructure.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePoll.Migrations", "src\SimplePoll.Migrations\SimplePoll.Migrations.csproj", "{1395E4BD-52FD-4F13-99F7-014871062EDB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePoll.Infrastructure.Identity", "src\SimplePoll.Infrastructure.Identity\SimplePoll.Infrastructure.Identity.csproj", "{FEF9AE24-3585-41C7-9BEB-844FD9A9F766}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{1395E4BD-52FD-4F13-99F7-014871062EDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1395E4BD-52FD-4F13-99F7-014871062EDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1395E4BD-52FD-4F13-99F7-014871062EDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEF9AE24-3585-41C7-9BEB-844FD9A9F766}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEF9AE24-3585-41C7-9BEB-844FD9A9F766}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEF9AE24-3585-41C7-9BEB-844FD9A9F766}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEF9AE24-3585-41C7-9BEB-844FD9A9F766}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{E465D573-BD77-4076-97EE-4B48418F404E} = {207169F6-4948-44DC-A711-A61A23B10228}
 		{1333EFAB-F488-4390-B479-BA202C3E49FE} = {207169F6-4948-44DC-A711-A61A23B10228}
 		{1395E4BD-52FD-4F13-99F7-014871062EDB} = {207169F6-4948-44DC-A711-A61A23B10228}
+		{FEF9AE24-3585-41C7-9BEB-844FD9A9F766} = {207169F6-4948-44DC-A711-A61A23B10228}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1B0DF6B7-36D1-4E9F-9A27-E0E0D9113EA7}

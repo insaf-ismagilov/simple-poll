@@ -1,7 +1,6 @@
-﻿using System;
-using System.IO;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace SimplePoll.Web.Configurations
 {
@@ -11,13 +10,21 @@ namespace SimplePoll.Web.Configurations
 		{
 			services.AddSwaggerGen(c =>
 			{
-				c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+				c.SwaggerDoc("v1", new OpenApiInfo
 				{
-					Description = "Bearer authorization. Example: \"bearer {token}\"",
+					Title = "SimplePoll API",
+					Version = "v1"
+				});
+				
+				c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+				{
+					Description = "Standard Authorization header using the Bearer scheme. Example: \"bearer {token}\"",
 					In = ParameterLocation.Header,
 					Name = "Authorization",
 					Type = SecuritySchemeType.ApiKey
 				});
+				
+				c.OperationFilter<SecurityRequirementsOperationFilter>();
 			});
 			
 			return services;

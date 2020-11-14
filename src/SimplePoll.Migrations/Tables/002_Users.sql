@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS public.users
 (
     id                 int                         NOT NULL GENERATED ALWAYS AS IDENTITY,
-    role_id            int                         NOT NULL,
+    role_id            int                         NOT NULL UNIQUE,
     email              text                        NOT NULL,
     password_hash      text,
     first_name         text,

@@ -31,6 +31,12 @@
       <EmbeddedResource Include="Tables\002_Users.sql" />
       <None Remove="Functions\001_Users_GetById.sql" />
       <EmbeddedResource Include="Functions\001_Users_GetById.sql" />
+      <None Remove="Functions\002_Users_Add.sql" />
+      <EmbeddedResource Include="Functions\002_Users_Add.sql" />
+      <None Remove="Functions\003_Users_Update.sql" />
+      <EmbeddedResource Include="Functions\003_Users_Update.sql" />
+      <None Remove="Functions\004_Users_GetByEmail.sql" />
+      <EmbeddedResource Include="Functions\004_Users_GetByEmail.sql" />
     </ItemGroup>
 
     <ItemGroup>

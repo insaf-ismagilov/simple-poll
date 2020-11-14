@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
-using SimplePoll.Infrastructure.DataAccess.Profiles;
 
 namespace SimplePoll.Web.Configurations
 {
@@ -11,7 +10,8 @@ namespace SimplePoll.Web.Configurations
 		{
 			var profiles = new List<Profile>
 			{
-				new UserProfile()
+				new SimplePoll.Infrastructure.DataAccess.Profiles.UserProfile(),
+				new Profiles.UserProfile()
 			};
 			
 			var mapper = new MapperConfiguration(c => c.AddProfiles(profiles)).CreateMapper();
