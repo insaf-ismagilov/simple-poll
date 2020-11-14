@@ -36,7 +36,7 @@ namespace SimplePoll.Web.Controllers
 		[AllowAnonymous]
 		[HttpPost("signup")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
-		[ProducesResponseType(StatusCodes.Status401Unauthorized)]
+		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		public async Task<IActionResult> SignUpAsync(SignUpRequest request)
 		{
 			var result = await _identityService.SignUpAsync(request);
