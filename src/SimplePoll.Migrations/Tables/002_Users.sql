@@ -6,8 +6,8 @@ CREATE TABLE IF NOT EXISTS public.users
     password_hash      text,
     first_name         text,
     last_name          text,
-    created_date       timestamp without time zone NOT NULL DEFAULT timezone('utc'::text, now()),
-    last_modified_date timestamp without time zone NOT NULL DEFAULT timezone('utc'::text, now()),
+    created_date       timestamp NOT NULL DEFAULT timezone('utc'::text, now()),
+    last_modified_date timestamp NOT NULL DEFAULT timezone('utc'::text, now()),
 
     CONSTRAINT users_pk PRIMARY KEY (id),
     CONSTRAINT users_user_roles_fk FOREIGN KEY (role_id) REFERENCES public.user_roles (id)

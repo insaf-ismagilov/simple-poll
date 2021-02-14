@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace SimplePoll.Migrations
 {
-	class Program
+	internal static class Program
 	{
 		private const string TablesPath = "SimplePoll.Migrations.Tables.";
 		private const string IndexesPath = "SimplePoll.Migrations.Indexes.";
@@ -15,7 +15,7 @@ namespace SimplePoll.Migrations
 		private const string PatchesPath = "SimplePoll.Migrations.Patches.";
 		private const string DataPath = "SimplePoll.Migrations.Data.";
 
-		static int Main(string[] args)
+		private static int Main(string[] args)
 		{
 			var configuration = new ConfigurationBuilder()
 				.AddJsonFile("appsettings.json")

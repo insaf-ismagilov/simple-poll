@@ -37,6 +37,14 @@
       <EmbeddedResource Include="Functions\003_Users_Update.sql" />
       <None Remove="Functions\004_Users_GetByEmail.sql" />
       <EmbeddedResource Include="Functions\004_Users_GetByEmail.sql" />
+      <None Remove="Tables\003_Polls.sql" />
+      <EmbeddedResource Include="Tables\003_Polls.sql" />
+      <None Remove="Tables\004_PollOptions.sql" />
+      <EmbeddedResource Include="Tables\004_PollOptions.sql" />
+      <None Remove="Functions\005_Polls_Create.sql" />
+      <EmbeddedResource Include="Functions\005_Polls_Create.sql" />
+      <None Remove="Functions\006_Polls_Update.sql" />
+      <EmbeddedResource Include="Functions\006_Polls_Update.sql" />
     </ItemGroup>
 
     <ItemGroup>
