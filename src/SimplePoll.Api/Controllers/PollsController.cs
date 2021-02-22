@@ -49,7 +49,7 @@ namespace SimplePoll.Api.Controllers
 		{
 			var result = await _pollService.CreateAsync(request);
 
-			return Response(result);
+			return MakeResponse(result);
 		}
 
 		[HttpPut("id")]
@@ -62,7 +62,7 @@ namespace SimplePoll.Api.Controllers
 
 			var result = await _pollService.UpdateAsync(request);
 
-			return Response(result);
+			return MakeResponse(result);
 		}
 	}
 }

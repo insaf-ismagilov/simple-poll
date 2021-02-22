@@ -5,7 +5,7 @@ namespace SimplePoll.Api.Controllers
 {
 	public abstract class ApiControllerBase : ControllerBase
 	{
-		protected IActionResult Response<T>(ServiceResponse<T> serviceResponse)
+		protected IActionResult MakeResponse<T>(ServiceResponse<T> serviceResponse)
 		{
 			if (!serviceResponse.Successful)
 				return BadRequest(serviceResponse.ErrorMessage);
@@ -16,7 +16,7 @@ namespace SimplePoll.Api.Controllers
 			return Ok(serviceResponse.Data);
 		}
 		
-		protected IActionResult Response(ServiceResponse serviceResponse)
+		protected IActionResult MakeResponse(ServiceResponse serviceResponse)
 		{
 			if (!serviceResponse.Successful)
 				return BadRequest(serviceResponse.ErrorMessage);

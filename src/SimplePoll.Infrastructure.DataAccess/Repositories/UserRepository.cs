@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
-using SimplePoll.Domain.Contracts;
 using SimplePoll.Domain.Contracts.Repositories;
 using SimplePoll.Domain.Entities;
 using SimplePoll.Infrastructure.DataAccess.Constants;

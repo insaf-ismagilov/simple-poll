@@ -12,7 +12,7 @@ namespace SimplePoll.Api.Configurations
 			
 			var connectionProvider = new NpgSqlConnectionProvider(connectionString);
 
-			services.AddSingleton<IDatabaseConnectionProvider>(x => connectionProvider);
+			services.AddSingleton<IDatabaseConnectionProvider>(_ => connectionProvider);
 			services.AddTransient<IDatabaseRepository, DatabaseRepository>();
 			
 			return services;

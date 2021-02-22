@@ -18,7 +18,7 @@ namespace SimplePoll.Api.Configurations
 			
 			var mapper = new MapperConfiguration(c => c.AddProfiles(profiles)).CreateMapper();
 
-			services.AddSingleton(x => mapper);
+			services.AddSingleton(_ => mapper);
 			
 			return services;
 		}
