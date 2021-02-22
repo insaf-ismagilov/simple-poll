@@ -5,7 +5,7 @@ namespace SimplePoll.Domain.Requests
 {
 	public class CreatePollRequest : SavePollRequest
 	{
-		public ICollection<SavePollOptionRequest> Options { get; set; }
+		public ICollection<CreatePollOptionRequest> Options { get; set; }
 	}
 
 	public class UpdatePollRequest : SavePollRequest
@@ -24,6 +24,10 @@ namespace SimplePoll.Domain.Requests
 	{
 		public string Text { get; set; }
 		public string Value { get; set; }
+	}
+
+	public class CreatePollOptionRequest : SavePollOptionRequest
+	{
 	}
 
 	public class UpdatePollOptionRequest : SavePollOptionRequest

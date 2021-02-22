@@ -11,6 +11,10 @@ namespace SimplePoll.Api.Configurations
 		{
 			services.AddTransient<IValidator<SignInRequest>, SignInRequestValidator>();
 			services.AddTransient<IValidator<SignUpRequest>, SignUpRequestValidator>();
+			services.AddTransient<IValidator<CreatePollRequest>, CreatePollRequestValidator>();
+			services.AddTransient<IValidator<CreatePollOptionRequest>, CreatePollOptionRequestValidator>();
+			services.AddTransient<IValidator<UpdatePollRequest>, UpdatePollRequestValidator>();
+			services.AddTransient<IValidator<UpdatePollOptionRequest>, UpdatePollOptionRequestValidator>();
 			
 			return services;
 		}
