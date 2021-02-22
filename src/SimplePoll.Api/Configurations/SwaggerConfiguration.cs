@@ -2,7 +2,7 @@
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 
-namespace SimplePoll.Web.Configurations
+namespace SimplePoll.Api.Configurations
 {
 	public static class SwaggerConfiguration
 	{

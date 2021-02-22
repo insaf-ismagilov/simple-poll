@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using SimplePoll.Api.Models;
 using SimplePoll.Domain.Entities;
-using SimplePoll.Web.Models;
 
-namespace SimplePoll.Web.Profiles
+namespace SimplePoll.Api.Profiles
 {
 	public class UserProfile : Profile
 	{

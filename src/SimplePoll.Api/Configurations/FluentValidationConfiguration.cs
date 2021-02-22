@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SimplePoll.Domain.Requests;
 using SimplePoll.Domain.Validators;
 
-namespace SimplePoll.Web.Configurations
+namespace SimplePoll.Api.Configurations
 {
 	public static class FluentValidationConfiguration
 	{

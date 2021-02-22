@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using SimplePoll.Infrastructure.Authorization;
 
-namespace SimplePoll.Web.Configurations
+namespace SimplePoll.Api.Configurations
 {
 	public static class AuthConfiguration
 	{

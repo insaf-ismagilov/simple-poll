@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SimplePoll.Web.Configurations;
+using SimplePoll.Api.Configurations;
 
-namespace SimplePoll.Web
+namespace SimplePoll.Api
 {
     public class Startup
     {

@@ -3,10 +3,10 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SimplePoll.Api.Models;
 using SimplePoll.Domain.Contracts.Services;
-using SimplePoll.Web.Models;
 
-namespace SimplePoll.Web.Controllers
+namespace SimplePoll.Api.Controllers
 {
 	[ApiController]
 	[Authorize]

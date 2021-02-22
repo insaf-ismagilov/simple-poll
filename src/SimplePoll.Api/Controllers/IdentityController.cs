@@ -6,7 +6,7 @@ using SimplePoll.Domain.Contracts.Services;
 using SimplePoll.Domain.Requests;
 using SimplePoll.Domain.Responses;
 
-namespace SimplePoll.Web.Controllers
+namespace SimplePoll.Api.Controllers
 {
 	[ApiController]
 	[Route("api/identity")]

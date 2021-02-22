@@ -7,7 +7,7 @@ using SimplePoll.Domain.Entities;
 using SimplePoll.Infrastructure.Authorization;
 using SimplePoll.Infrastructure.DataAccess.Repositories;
 
-namespace SimplePoll.Web.Configurations
+namespace SimplePoll.Api.Configurations
 {
 	public static class DiConfiguration
 	{

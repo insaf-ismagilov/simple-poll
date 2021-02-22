@@ -1,4 +1,4 @@
-﻿namespace SimplePoll.Web.Models
+﻿namespace SimplePoll.Api.Models
 {
 	public class UserVm
 	{

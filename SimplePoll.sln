@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{207169F6-4948-44DC-A711-A61A23B10228}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePoll.Web", "src\SimplePoll.Web\SimplePoll.Web.csproj", "{E9781AA0-EE2C-491A-8344-C4F5F8368902}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePoll.Api", "src\SimplePoll.Api\SimplePoll.Api.csproj", "{E9781AA0-EE2C-491A-8344-C4F5F8368902}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DE2F6B38-2EDE-4870-9767-E87174FF6CBA}"
 	ProjectSection(SolutionItems) = preProject

@@ -2,7 +2,7 @@
 using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace SimplePoll.Web.Configurations
+namespace SimplePoll.Api.Configurations
 {
 	public static class AutoMapperConfiguration
 	{

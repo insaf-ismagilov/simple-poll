@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using SimplePoll.Infrastructure.DataAccess;
 
-namespace SimplePoll.Web.Configurations
+namespace SimplePoll.Api.Configurations
 {
 	public static class DbConfiguration
 	{
