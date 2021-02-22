@@ -14,7 +14,7 @@ namespace SimplePoll.Infrastructure.DataAccess
 			_databaseConnectionProvider = databaseConnectionProvider;
 		}
 
-		public async Task<T> GetAsync<T>(string functionName, params DbParameter[] paramaters)
+		public async Task<T> GetAsync<T>(string functionName, params DbParameterInfo[] paramaters)
 		{
 			using var connection = _databaseConnectionProvider.Create();
 			connection.Open();
@@ -22,7 +22,7 @@ namespace SimplePoll.Infrastructure.DataAccess
 			return await connection.QueryFirstOrDefaultAsync<T>(functionName, GetParameters(paramaters), null, null, CommandType.StoredProcedure);
 		}
 
-		public async Task<IEnumerable<T>> GetCollectionAsync<T>(string functionName, params DbParameter[] paramaters)
+		public async Task<IEnumerable<T>> GetCollectionAsync<T>(string functionName, params DbParameterInfo[] paramaters)
 		{
 			using var connection = _databaseConnectionProvider.Create();
 			connection.Open();
@@ -30,7 +30,7 @@ namespace SimplePoll.Infrastructure.DataAccess
 			return await connection.QueryAsync<T>(functionName, GetParameters(paramaters), null, null, CommandType.StoredProcedure);
 		}
 
-		public async Task<int> ExecuteAsync(string functionName, params DbParameter[] paramaters)
+		public async Task<int> ExecuteAsync(string functionName, params DbParameterInfo[] paramaters)
 		{
 			using var connection = _databaseConnectionProvider.Create();
 			connection.Open();
@@ -38,7 +38,7 @@ namespace SimplePoll.Infrastructure.DataAccess
 			return await connection.ExecuteAsync(functionName, GetParameters(paramaters), null, null, CommandType.StoredProcedure);
 		}
 
-		private static object GetParameters(params DbParameter[] parameters)
+		private static object GetParameters(params DbParameterInfo[] parameters)
 		{
 			var param = new DynamicParameters();
 

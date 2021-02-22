@@ -47,7 +47,7 @@ BEGIN
     INTO public.poll_options (text, value, poll_id)
     SELECT o.text, o.value, v_updated_poll_id
     FROM options o
-    WHERE o.id IS NULL;
+    WHERE o.id IS NULL OR o.id = 0;
 
     RETURN v_updated_poll_id;
 END;

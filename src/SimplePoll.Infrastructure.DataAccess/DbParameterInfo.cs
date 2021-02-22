@@ -2,14 +2,14 @@
 
 namespace SimplePoll.Infrastructure.DataAccess
 {
-	public class DbParameter
+	public class DbParameterInfo
 	{
 		private const string Prefix = "p_";
 
 		public string Name { get; }
 		public object Value { get; }
 
-		public DbParameter(string name, object value)
+		public DbParameterInfo(string name, object value)
 		{
 			Name = Prefix + ToUnderscoreCase(name);
 			Value = value;

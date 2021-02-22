@@ -18,6 +18,8 @@ namespace SimplePoll.Api.Configurations
 			services.AddSingleton<IJwtGenerator, JwtGenerator>();
 			services.AddTransient<IPasswordHasher<User>, PasswordHasher<User>>();
 			services.AddTransient<IIdentityService, IdentityService>();
+			services.AddTransient<IPollRepository, PollRepository>();
+			services.AddTransient<IPollService, PollService>();
 
 			return services;
 		}
