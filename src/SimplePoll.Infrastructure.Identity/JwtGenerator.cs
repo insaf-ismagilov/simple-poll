@@ -2,6 +2,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using SimplePoll.Domain.Entities;
 
@@ -11,9 +12,9 @@ namespace SimplePoll.Infrastructure.Authorization
 	{
 		private readonly JwtSettings _jwtSettings;
 		
-		public JwtGenerator(JwtSettings jwtSettings)
+		public JwtGenerator(IOptions<JwtSettings> jwtSettings)
 		{
-			_jwtSettings = jwtSettings;
+			_jwtSettings = jwtSettings.Value;
 		}
 
 		public string GetToken(User user)

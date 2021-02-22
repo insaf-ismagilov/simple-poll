@@ -15,11 +15,9 @@ namespace SimplePoll.Api.Configurations
 	{
 		public static IServiceCollection ConfigureAuth(this IServiceCollection services, IConfiguration configuration)
 		{
-			var jwtSettings = new JwtSettings();
-			configuration.GetSection(nameof(JwtSettings)).Bind(jwtSettings);
-
-			services.AddSingleton(jwtSettings);
-
+			var jwtSettingsSection = configuration.GetSection(nameof(JwtSettings));
+			services.Configure<JwtSettings>(jwtSettingsSection);
+			
 			services.AddAuthentication(options =>
 				{
 					options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -35,9 +33,9 @@ namespace SimplePoll.Api.Configurations
 						ValidateAudience = true,
 						ValidateLifetime = true,
 						ValidateIssuerSigningKey = true,
-						ValidIssuer = jwtSettings.Issuer,
-						ValidAudience = jwtSettings.Audience,
-						IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SigningKey))
+						ValidIssuer = jwtSettingsSection[nameof(JwtSettings.Issuer)],
+						ValidAudience = jwtSettingsSection[nameof(JwtSettings.Audience)],
+						IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettingsSection[nameof(JwtSettings.SigningKey)]))
 					};
 
 					options.Events = new JwtBearerEvents
@@ -46,7 +44,7 @@ namespace SimplePoll.Api.Configurations
 						{
 							var email = c.HttpContext.User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Email)?.Value;
 							var logger = services.BuildServiceProvider().GetService<ILogger<Startup>>();
-							logger.LogError($"Access denied for {email}. Path: {c.HttpContext.Request.Path}");
+							logger.LogError("Access denied for {Email}. Path: {Path}", email, c.HttpContext.Request.Path);
 							return Task.CompletedTask;
 						}
 					};
