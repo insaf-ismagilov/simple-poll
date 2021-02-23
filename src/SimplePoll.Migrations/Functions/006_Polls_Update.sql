@@ -15,7 +15,8 @@ DECLARE
 BEGIN
     UPDATE public.polls p
     SET title  = p_title,
-        status = p_status
+        status = p_status,
+        last_modified_date = now() at time zone 'utc'
     WHERE p.id = p_id
     RETURNING id INTO v_updated_poll_id;
 
@@ -39,7 +40,8 @@ BEGIN
          update_options AS (
              UPDATE public.poll_options po
                  SET text = o.text,
-                     value = o.value
+                     value = o.value,
+                     last_modified_date = now() at time zone 'utc'
                  FROM options o
                  WHERE po.id = o.id AND po.poll_id = v_updated_poll_id
          )

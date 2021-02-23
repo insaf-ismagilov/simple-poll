@@ -17,5 +17,11 @@
 			public const string GetById = "public.polls_get_by_id";
 			public const string GetAll = "public.polls_get_all";
 		}
+
+		public static class PollAnswerRepository
+		{
+			public const string Add = "public.poll_answers_add";
+			public const string GetById = "public.poll_answers_get_by_id";
+		}
 	}
 }

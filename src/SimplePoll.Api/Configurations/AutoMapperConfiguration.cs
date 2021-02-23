@@ -13,7 +13,8 @@ namespace SimplePoll.Api.Configurations
 			{
 				new SimplePoll.Infrastructure.DataAccess.Profiles.UserProfile(),
 				new Profiles.UserProfile(),
-				new PollProfile()
+				new PollProfile(),
+				new PollAnswerProfile()
 			};
 			
 			var mapper = new MapperConfiguration(c => c.AddProfiles(profiles)).CreateMapper();

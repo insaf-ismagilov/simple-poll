@@ -20,6 +20,8 @@ namespace SimplePoll.Api.Configurations
 			services.AddTransient<IIdentityService, IdentityService>();
 			services.AddTransient<IPollRepository, PollRepository>();
 			services.AddTransient<IPollService, PollService>();
+			services.AddTransient<IPollAnswerRepository, PollAnswerRepository>();
+			services.AddTransient<IPollAnswerService, PollAnswerService>();
 
 			return services;
 		}

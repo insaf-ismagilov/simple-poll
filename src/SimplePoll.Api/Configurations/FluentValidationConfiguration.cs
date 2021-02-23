@@ -15,6 +15,7 @@ namespace SimplePoll.Api.Configurations
 			services.AddTransient<IValidator<CreatePollOptionRequest>, CreatePollOptionRequestValidator>();
 			services.AddTransient<IValidator<UpdatePollRequest>, UpdatePollRequestValidator>();
 			services.AddTransient<IValidator<UpdatePollOptionRequest>, UpdatePollOptionRequestValidator>();
+			services.AddTransient<IValidator<AddPollAnswerRequest>, AddPollAnswerRequestValidator>();
 			
 			return services;
 		}
