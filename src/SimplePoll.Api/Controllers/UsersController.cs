@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SimplePoll.Api.Models;
-using SimplePoll.Domain.Contracts.Services;
+using SimplePoll.Application;
+using SimplePoll.Application.Contracts;
 
 namespace SimplePoll.Api.Controllers
 {
@@ -13,8 +14,8 @@ namespace SimplePoll.Api.Controllers
 	[Route("api/users")]
 	public class UsersController : ControllerBase
 	{
-		private readonly IUserService _userService;
 		private readonly IMapper _mapper;
+		private readonly IUserService _userService;
 
 		public UsersController(
 			IUserService userService,
@@ -33,7 +34,7 @@ namespace SimplePoll.Api.Controllers
 
 			if (result == null)
 				return NotFound();
-			
+
 			return Ok(_mapper.Map<UserVm>(result));
 		}
 	}

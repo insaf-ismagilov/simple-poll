@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SimplePoll.Domain.Contracts.Repositories;
 using SimplePoll.Domain.Entities;
+using SimplePoll.Infrastructure.DataAccess.Constants;
 using SimplePoll.Infrastructure.DataAccess.Data;
 
 namespace SimplePoll.Infrastructure.DataAccess.Repositories
@@ -18,7 +19,7 @@ namespace SimplePoll.Infrastructure.DataAccess.Repositories
 
 		public Task<int> CreateAsync(Poll poll)
 		{
-			return _databaseRepository.GetAsync<int>(Constants.Functions.PollRepository.Create,
+			return _databaseRepository.GetAsync<int>(Functions.PollRepository.Create,
 				DbParameterHelper.Create(nameof(poll.Title), poll.Title),
 				DbParameterHelper.Create(nameof(poll.Status), poll.Status),
 				DbParameterHelper.CreateJsonb(nameof(poll.Options), poll.Options));
@@ -26,7 +27,7 @@ namespace SimplePoll.Infrastructure.DataAccess.Repositories
 
 		public Task<int?> UpdateAsync(Poll poll)
 		{
-			return _databaseRepository.GetAsync<int?>(Constants.Functions.PollRepository.Update,
+			return _databaseRepository.GetAsync<int?>(Functions.PollRepository.Update,
 				DbParameterHelper.Create(nameof(poll.Id), poll.Id),
 				DbParameterHelper.Create(nameof(poll.Title), poll.Title),
 				DbParameterHelper.Create(nameof(poll.Status), poll.Status),
@@ -35,7 +36,7 @@ namespace SimplePoll.Infrastructure.DataAccess.Repositories
 
 		public async Task<Poll> GetByIdAsync(int id)
 		{
-			var records = await _databaseRepository.GetCollectionAsync<PollRecord>(Constants.Functions.PollRepository.GetById,
+			var records = await _databaseRepository.GetCollectionAsync<PollRecord>(Functions.PollRepository.GetById,
 				DbParameterHelper.Create(nameof(id), id));
 
 			return ToPoll(records).FirstOrDefault();
@@ -43,7 +44,7 @@ namespace SimplePoll.Infrastructure.DataAccess.Repositories
 
 		public async Task<ICollection<Poll>> GetAllAsync()
 		{
-			var records = await _databaseRepository.GetCollectionAsync<PollRecord>(Constants.Functions.PollRepository.GetAll);
+			var records = await _databaseRepository.GetCollectionAsync<PollRecord>(Functions.PollRepository.GetAll);
 
 			return ToPoll(records).ToList();
 		}

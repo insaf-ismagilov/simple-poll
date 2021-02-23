@@ -2,6 +2,7 @@
 using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using SimplePoll.Application.Profiles;
+using SimplePoll.Infrastructure.DataAccess.Profiles;
 
 namespace SimplePoll.Api.Configurations
 {
@@ -11,16 +12,16 @@ namespace SimplePoll.Api.Configurations
 		{
 			var profiles = new List<Profile>
 			{
-				new SimplePoll.Infrastructure.DataAccess.Profiles.UserProfile(),
+				new UserProfile(),
 				new Profiles.UserProfile(),
 				new PollProfile(),
 				new PollAnswerProfile()
 			};
-			
+
 			var mapper = new MapperConfiguration(c => c.AddProfiles(profiles)).CreateMapper();
 
 			services.AddSingleton(_ => mapper);
-			
+
 			return services;
 		}
 	}

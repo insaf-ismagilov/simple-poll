@@ -12,15 +12,15 @@ namespace SimplePoll.Api.Controllers
 
 			if (serviceResponse.Data == null)
 				return NotFound();
-			
+
 			return Ok(serviceResponse.Data);
 		}
-		
+
 		protected IActionResult MakeResponse(ServiceResponse serviceResponse)
 		{
 			if (!serviceResponse.Successful)
 				return BadRequest(serviceResponse.ErrorMessage);
-			
+
 			return Ok();
 		}
 	}

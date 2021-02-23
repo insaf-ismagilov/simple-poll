@@ -2,7 +2,7 @@
 using SimplePoll.Domain.Entities;
 using SimplePoll.Domain.Responses;
 
-namespace SimplePoll.Domain.Contracts.Services
+namespace SimplePoll.Application.Contracts
 {
 	public interface IUserService
 	{

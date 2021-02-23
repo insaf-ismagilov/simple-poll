@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using SimplePoll.Application.Models.Requests;
 using SimplePoll.Domain.Entities;
-using SimplePoll.Domain.Requests;
 using SimplePoll.Domain.Responses;
 
-namespace SimplePoll.Domain.Contracts.Services
+namespace SimplePoll.Application.Contracts
 {
 	public interface IPollService
 	{

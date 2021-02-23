@@ -2,9 +2,10 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SimplePoll.Domain.Contracts.Services;
+using SimplePoll.Application;
+using SimplePoll.Application.Contracts;
+using SimplePoll.Application.Models.Requests;
 using SimplePoll.Domain.Entities;
-using SimplePoll.Domain.Requests;
 
 namespace SimplePoll.Api.Controllers
 {
@@ -14,7 +15,7 @@ namespace SimplePoll.Api.Controllers
 	public class PollAnswerController : ApiControllerBase
 	{
 		private readonly IPollAnswerService _pollAnswerService;
-		
+
 		public PollAnswerController(IPollAnswerService pollAnswerService)
 		{
 			_pollAnswerService = pollAnswerService;

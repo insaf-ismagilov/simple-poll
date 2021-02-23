@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using SimplePoll.Domain.Requests;
+using SimplePoll.Application.Models.Requests;
 
-namespace SimplePoll.Domain.Validators
+namespace SimplePoll.Application.Validators
 {
 	public abstract class SavePollOptionRequestValidator<T> : AbstractValidator<T> where T : SavePollOptionRequest
 	{
@@ -14,11 +14,9 @@ namespace SimplePoll.Domain.Validators
 
 	public class CreatePollOptionRequestValidator : SavePollOptionRequestValidator<CreatePollOptionRequest>
 	{
-		
 	}
 
 	public class UpdatePollOptionRequestValidator : SavePollOptionRequestValidator<UpdatePollOptionRequest>
 	{
-		
 	}
 }

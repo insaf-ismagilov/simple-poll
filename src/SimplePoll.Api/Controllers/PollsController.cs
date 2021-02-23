@@ -2,9 +2,10 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SimplePoll.Domain.Contracts.Services;
+using SimplePoll.Application;
+using SimplePoll.Application.Contracts;
+using SimplePoll.Application.Models.Requests;
 using SimplePoll.Domain.Entities;
-using SimplePoll.Domain.Requests;
 
 namespace SimplePoll.Api.Controllers
 {

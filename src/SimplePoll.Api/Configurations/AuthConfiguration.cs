@@ -17,7 +17,7 @@ namespace SimplePoll.Api.Configurations
 		{
 			var jwtSettingsSection = configuration.GetSection(nameof(JwtSettings));
 			services.Configure<JwtSettings>(jwtSettingsSection);
-			
+
 			services.AddAuthentication(options =>
 				{
 					options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

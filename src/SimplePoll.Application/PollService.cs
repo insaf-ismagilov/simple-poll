@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using SimplePoll.Application.Contracts;
+using SimplePoll.Application.Models.Requests;
 using SimplePoll.Domain.Contracts.Repositories;
-using SimplePoll.Domain.Contracts.Services;
 using SimplePoll.Domain.Entities;
-using SimplePoll.Domain.Requests;
 using SimplePoll.Domain.Responses;
 
 namespace SimplePoll.Application
@@ -21,11 +21,11 @@ namespace SimplePoll.Application
 			_mapper = mapper;
 			_pollRepository = pollRepository;
 		}
-		
+
 		public async Task<ServiceResponse<Poll>> CreateAsync(CreatePollRequest request)
 		{
 			var pollToCreate = _mapper.Map<Poll>(request);
-			
+
 			var newId = await _pollRepository.CreateAsync(pollToCreate);
 			var newPoll = await GetByIdAsync(newId);
 
@@ -35,10 +35,10 @@ namespace SimplePoll.Application
 		public async Task<ServiceResponse<Poll>> UpdateAsync(UpdatePollRequest request)
 		{
 			var pollToUpdate = _mapper.Map<Poll>(request);
-			
+
 			var updatedId = await _pollRepository.UpdateAsync(pollToUpdate);
 			var updatedPoll = updatedId.HasValue ? await GetByIdAsync(updatedId.Value) : null;
-			
+
 			return ServiceResponse<Poll>.Success(updatedPoll);
 		}
 

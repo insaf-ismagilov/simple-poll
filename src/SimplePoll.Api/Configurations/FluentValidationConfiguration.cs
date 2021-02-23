@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
-using SimplePoll.Domain.Requests;
-using SimplePoll.Domain.Validators;
+using SimplePoll.Application.Models.Requests;
+using SimplePoll.Application.Validators;
 
 namespace SimplePoll.Api.Configurations
 {
@@ -16,7 +16,7 @@ namespace SimplePoll.Api.Configurations
 			services.AddTransient<IValidator<UpdatePollRequest>, UpdatePollRequestValidator>();
 			services.AddTransient<IValidator<UpdatePollOptionRequest>, UpdatePollOptionRequestValidator>();
 			services.AddTransient<IValidator<AddPollAnswerRequest>, AddPollAnswerRequestValidator>();
-			
+
 			return services;
 		}
 	}

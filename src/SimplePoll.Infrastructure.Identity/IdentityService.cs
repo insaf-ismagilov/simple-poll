@@ -1,18 +1,18 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
-using SimplePoll.Domain.Contracts.Services;
+using SimplePoll.Application.Contracts;
+using SimplePoll.Application.Models.Requests;
 using SimplePoll.Domain.Entities;
 using SimplePoll.Domain.Enums;
-using SimplePoll.Domain.Requests;
 using SimplePoll.Domain.Responses;
 
 namespace SimplePoll.Infrastructure.Authorization
 {
 	public class IdentityService : IIdentityService
 	{
-		private readonly IUserService _userService;
 		private readonly IJwtGenerator _jwtGenerator;
 		private readonly IPasswordHasher<User> _passwordHasher;
+		private readonly IUserService _userService;
 
 		public IdentityService(
 			IUserService userService,
@@ -55,7 +55,7 @@ namespace SimplePoll.Infrastructure.Authorization
 			user.PasswordHash = _passwordHasher.HashPassword(user, request.Password);
 
 			var addResult = await _userService.AddAsync(user);
-			
+
 			return addResult;
 		}
 

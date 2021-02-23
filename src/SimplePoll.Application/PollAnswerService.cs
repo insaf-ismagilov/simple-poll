@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using SimplePoll.Application.Contracts;
+using SimplePoll.Application.Models.Requests;
 using SimplePoll.Domain.Contracts.Repositories;
-using SimplePoll.Domain.Contracts.Services;
 using SimplePoll.Domain.Entities;
-using SimplePoll.Domain.Requests;
 using SimplePoll.Domain.Responses;
 
 namespace SimplePoll.Application

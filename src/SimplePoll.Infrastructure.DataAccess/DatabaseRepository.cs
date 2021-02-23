@@ -26,7 +26,7 @@ namespace SimplePoll.Infrastructure.DataAccess
 		{
 			using var connection = _databaseConnectionProvider.Create();
 			connection.Open();
-			
+
 			return await connection.QueryAsync<T>(functionName, GetParameters(paramaters), null, null, CommandType.StoredProcedure);
 		}
 
@@ -34,7 +34,7 @@ namespace SimplePoll.Infrastructure.DataAccess
 		{
 			using var connection = _databaseConnectionProvider.Create();
 			connection.Open();
-			
+
 			return await connection.ExecuteAsync(functionName, GetParameters(paramaters), null, null, CommandType.StoredProcedure);
 		}
 
@@ -42,10 +42,7 @@ namespace SimplePoll.Infrastructure.DataAccess
 		{
 			var param = new DynamicParameters();
 
-			foreach (var parameter in parameters)
-			{
-				param.Add(parameter.Name, parameter.Value);
-			}
+			foreach (var parameter in parameters) param.Add(parameter.Name, parameter.Value);
 
 			return param;
 		}

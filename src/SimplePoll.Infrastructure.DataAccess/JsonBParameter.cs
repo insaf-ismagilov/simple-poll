@@ -1,7 +1,8 @@
-﻿using Newtonsoft.Json;
-using Npgsql;
-using System.Data;
+﻿using System.Data;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Npgsql;
+using NpgsqlTypes;
 using static Dapper.SqlMapper;
 
 namespace SimplePoll.Infrastructure.DataAccess
@@ -18,13 +19,14 @@ namespace SimplePoll.Infrastructure.DataAccess
 			};
 			_dataJson = data as string ?? JsonConvert.SerializeObject(data, Formatting.Indented, settings);
 		}
+
 		public void AddParameter(IDbCommand command, string name)
 		{
 			var parameter = new NpgsqlParameter
 			{
 				ParameterName = name,
 				Value = _dataJson,
-				NpgsqlDbType = NpgsqlTypes.NpgsqlDbType.Jsonb
+				NpgsqlDbType = NpgsqlDbType.Jsonb
 			};
 			command.Parameters.Add(parameter);
 		}

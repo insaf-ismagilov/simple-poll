@@ -2,8 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SimplePoll.Domain.Contracts.Services;
-using SimplePoll.Domain.Requests;
+using SimplePoll.Application;
+using SimplePoll.Application.Contracts;
+using SimplePoll.Application.Models.Requests;
 using SimplePoll.Domain.Responses;
 
 namespace SimplePoll.Api.Controllers
@@ -29,10 +30,10 @@ namespace SimplePoll.Api.Controllers
 
 			if (!result.Successful)
 				return Unauthorized();
-			
+
 			return Ok(result.Data);
 		}
-		
+
 		[AllowAnonymous]
 		[HttpPost("signup")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
@@ -43,7 +44,7 @@ namespace SimplePoll.Api.Controllers
 
 			if (!result.Successful)
 				return BadRequest(result.ErrorMessage);
-			
+
 			return Ok();
 		}
 	}

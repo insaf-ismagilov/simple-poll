@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\SimplePoll.Application\SimplePoll.Application.csproj" />
       <ProjectReference Include="..\SimplePoll.Domain\SimplePoll.Domain.csproj" />
     </ItemGroup>
 

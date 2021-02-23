@@ -9,8 +9,8 @@ namespace SimplePoll.Infrastructure.DataAccess.Repositories
 {
 	public class UserRepository : IUserRepository
 	{
-		private readonly IMapper _mapper;
 		private readonly IDatabaseRepository _databaseRepository;
+		private readonly IMapper _mapper;
 
 		public UserRepository(
 			IMapper mapper,

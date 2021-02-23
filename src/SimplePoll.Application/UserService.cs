@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
+using SimplePoll.Application.Contracts;
 using SimplePoll.Domain.Contracts.Repositories;
-using SimplePoll.Domain.Contracts.Services;
 using SimplePoll.Domain.Entities;
 using SimplePoll.Domain.Responses;
 
@@ -19,7 +19,7 @@ namespace SimplePoll.Application
 		{
 			return _userRepository.GetByIdAsync(id);
 		}
-		
+
 		public Task<User> GetByEmailAsync(string email)
 		{
 			return _userRepository.GetByEmailAsync(email);
@@ -28,16 +28,16 @@ namespace SimplePoll.Application
 		public async Task<ServiceResponse<int>> AddAsync(User user)
 		{
 			var newId = await _userRepository.AddAsync(user);
-			return newId <= 0 
-				? ServiceResponse<int>.Error() 
+			return newId <= 0
+				? ServiceResponse<int>.Error()
 				: ServiceResponse<int>.Success(newId);
 		}
 
 		public async Task<ServiceResponse<int>> UpdateAsync(User user)
 		{
 			var updatedId = await _userRepository.UpdateAsync(user);
-			return !updatedId.HasValue 
-				? ServiceResponse<int>.Error() 
+			return !updatedId.HasValue
+				? ServiceResponse<int>.Error()
 				: ServiceResponse<int>.Success(updatedId.Value);
 		}
 	}

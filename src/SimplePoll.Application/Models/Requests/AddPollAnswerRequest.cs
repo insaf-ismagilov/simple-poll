@@ -1,4 +1,4 @@
-﻿namespace SimplePoll.Domain.Requests
+﻿namespace SimplePoll.Application.Models.Requests
 {
 	public class AddPollAnswerRequest
 	{

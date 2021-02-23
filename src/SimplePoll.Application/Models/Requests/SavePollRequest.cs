@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using SimplePoll.Domain.Enums;
 
-namespace SimplePoll.Domain.Requests
+namespace SimplePoll.Application.Models.Requests
 {
 	public class CreatePollRequest : SavePollRequest
 	{

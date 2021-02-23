@@ -20,7 +20,7 @@ namespace SimplePoll.Migrations
 			var configuration = new ConfigurationBuilder()
 				.AddJsonFile("appsettings.json")
 				.Build();
-			
+
 			var connectionString = configuration.GetConnectionString("SimplePoll");
 
 			EnsureDatabase.For.PostgresqlDatabase(connectionString);
@@ -30,9 +30,9 @@ namespace SimplePoll.Migrations
 					.PostgresqlDatabase(connectionString)
 					.WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly(), script => script.StartsWith(TablesPath),
 						new SqlScriptOptions {ScriptType = ScriptType.RunOnce, RunGroupOrder = 1})
-					.WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly(), script => script.StartsWith(IndexesPath), 
+					.WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly(), script => script.StartsWith(IndexesPath),
 						new SqlScriptOptions {ScriptType = ScriptType.RunOnce, RunGroupOrder = 2})
-					.WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly(), script => script.StartsWith(PatchesPath), 
+					.WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly(), script => script.StartsWith(PatchesPath),
 						new SqlScriptOptions {ScriptType = ScriptType.RunOnce, RunGroupOrder = 3})
 					.WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly(), script => script.StartsWith(FunctionsPath),
 						new SqlScriptOptions {ScriptType = ScriptType.RunAlways, RunGroupOrder = 4})

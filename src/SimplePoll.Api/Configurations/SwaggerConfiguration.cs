@@ -15,7 +15,7 @@ namespace SimplePoll.Api.Configurations
 					Title = "SimplePoll API",
 					Version = "v1"
 				});
-				
+
 				c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
 				{
 					Description = "Standard Authorization header using the Bearer scheme. Example: \"bearer {token}\"",
@@ -23,10 +23,10 @@ namespace SimplePoll.Api.Configurations
 					Name = "Authorization",
 					Type = SecuritySchemeType.ApiKey
 				});
-				
+
 				c.OperationFilter<SecurityRequirementsOperationFilter>();
 			});
-			
+
 			return services;
 		}
 	}

@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using SimplePoll.Domain.Contracts.Repositories;
 using SimplePoll.Domain.Entities;
+using SimplePoll.Infrastructure.DataAccess.Constants;
 
 namespace SimplePoll.Infrastructure.DataAccess.Repositories
 {
@@ -15,13 +16,13 @@ namespace SimplePoll.Infrastructure.DataAccess.Repositories
 
 		public Task<PollAnswer> GetByIdAsync(int id)
 		{
-			return _databaseRepository.GetAsync<PollAnswer>(Constants.Functions.PollAnswerRepository.GetById,
+			return _databaseRepository.GetAsync<PollAnswer>(Functions.PollAnswerRepository.GetById,
 				DbParameterHelper.Create(nameof(id), id));
 		}
 
 		public Task<int> AddAnswerAsync(PollAnswer pollAnswer)
 		{
-			return _databaseRepository.GetAsync<int>(Constants.Functions.PollAnswerRepository.Add,
+			return _databaseRepository.GetAsync<int>(Functions.PollAnswerRepository.Add,
 				DbParameterHelper.Create(nameof(pollAnswer.PollOptionId), pollAnswer.PollOptionId),
 				DbParameterHelper.Create(nameof(pollAnswer.UserId), pollAnswer.UserId));
 		}

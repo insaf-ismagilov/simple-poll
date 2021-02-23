@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using SimplePoll.Application.Models.Requests;
 using SimplePoll.Domain.Entities;
-using SimplePoll.Domain.Requests;
 
 namespace SimplePoll.Application.Profiles
 {

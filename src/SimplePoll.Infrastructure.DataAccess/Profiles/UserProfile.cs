@@ -13,7 +13,7 @@ namespace SimplePoll.Infrastructure.DataAccess.Profiles
 				.ForMember(m => m.Role,
 					o => o.MapFrom(m => new UserRole
 					{
-						Id = (UserRoleId)m.RoleId,
+						Id = (UserRoleId) m.RoleId,
 						Name = m.RoleName,
 						CreatedDate = m.RoleCreatedDate,
 						LastModifiedDate = m.RoleLastModifiedDate

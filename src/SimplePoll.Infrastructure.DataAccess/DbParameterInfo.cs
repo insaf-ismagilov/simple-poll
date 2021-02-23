@@ -6,14 +6,14 @@ namespace SimplePoll.Infrastructure.DataAccess
 	{
 		private const string Prefix = "p_";
 
-		public string Name { get; }
-		public object Value { get; }
-
 		public DbParameterInfo(string name, object value)
 		{
 			Name = Prefix + ToUnderscoreCase(name);
 			Value = value;
 		}
+
+		public string Name { get; }
+		public object Value { get; }
 
 		private static string ToUnderscoreCase(string str)
 		{

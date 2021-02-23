@@ -11,7 +11,7 @@ namespace SimplePoll.Infrastructure.Authorization
 	public class JwtGenerator : IJwtGenerator
 	{
 		private readonly JwtSettings _jwtSettings;
-		
+
 		public JwtGenerator(IOptions<JwtSettings> jwtSettings)
 		{
 			_jwtSettings = jwtSettings.Value;
@@ -21,19 +21,19 @@ namespace SimplePoll.Infrastructure.Authorization
 		{
 			if (user == null)
 				return null;
-			
+
 			var claims = GetClaims(user);
 			var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.SigningKey));
 			var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-			
+
 			var jwtSecurityToken = new JwtSecurityToken(
-				issuer: _jwtSettings.Issuer,
-				audience: _jwtSettings.Audience,
+				_jwtSettings.Issuer,
+				_jwtSettings.Audience,
 				claims,
 				expires: DateTime.UtcNow.AddSeconds(_jwtSettings.LifetimeSeconds),
 				signingCredentials: credentials
 			);
-			
+
 			var token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
 
 			return token;
@@ -41,12 +41,12 @@ namespace SimplePoll.Infrastructure.Authorization
 
 		private static Claim[] GetClaims(User user)
 		{
-			var claims = new []
+			var claims = new[]
 			{
 				new Claim(ClaimTypes.Email, user.Email),
 				new Claim(ClaimTypes.Role, user.Role?.Name ?? string.Empty)
 			};
-			
+
 			return claims;
 		}
 	}

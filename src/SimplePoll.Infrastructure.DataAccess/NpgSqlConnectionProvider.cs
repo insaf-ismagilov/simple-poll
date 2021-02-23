@@ -1,20 +1,21 @@
 ﻿using System.Data;
+using Dapper;
 using Npgsql;
 
 namespace SimplePoll.Infrastructure.DataAccess
 {
 	public class NpgSqlConnectionProvider : IDatabaseConnectionProvider
 	{
-		public string ConnectionString { get; }
-
 		public NpgSqlConnectionProvider(string connectionString)
 		{
 			ConnectionString = connectionString;
 		}
 
+		public string ConnectionString { get; }
+
 		public IDbConnection Create()
 		{
-			Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
+			DefaultTypeMap.MatchNamesWithUnderscores = true;
 			return new NpgsqlConnection(ConnectionString);
 		}
 	}
