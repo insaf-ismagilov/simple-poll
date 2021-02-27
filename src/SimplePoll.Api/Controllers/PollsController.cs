@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SimplePoll.Application;
 using SimplePoll.Application.Contracts;
 using SimplePoll.Application.Models.Requests;
 using SimplePoll.Domain.Entities;
@@ -21,7 +20,7 @@ namespace SimplePoll.Api.Controllers
 			_pollService = pollService;
 		}
 
-		[HttpGet("id")]
+		[HttpGet("{id}")]
 		[ProducesResponseType(typeof(Poll), StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		public async Task<IActionResult> GetById(int id)
@@ -53,7 +52,7 @@ namespace SimplePoll.Api.Controllers
 			return MakeResponse(result);
 		}
 
-		[HttpPut("id")]
+		[HttpPut("{id}")]
 		[ProducesResponseType(typeof(Poll), StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		public async Task<IActionResult> Update(int id, UpdatePollRequest request)

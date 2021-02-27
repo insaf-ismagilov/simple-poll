@@ -21,7 +21,7 @@ namespace SimplePoll.Api.Controllers
 			_pollAnswerService = pollAnswerService;
 		}
 
-		[HttpGet("id")]
+		[HttpGet("{id}")]
 		[ProducesResponseType(typeof(PollAnswer), StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		public async Task<IActionResult> GetById(int id)
