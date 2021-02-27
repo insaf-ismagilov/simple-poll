@@ -4,6 +4,7 @@ CREATE OR REPLACE FUNCTION public.polls_update(
     p_id int,
     p_title text,
     p_status int,
+    p_type int,
     p_options jsonb
 )
     RETURNS int
@@ -14,8 +15,9 @@ DECLARE
     v_updated_poll_id int;
 BEGIN
     UPDATE public.polls p
-    SET title  = p_title,
-        status = p_status,
+    SET title              = p_title,
+        status             = p_status,
+        type               = p_type,
         last_modified_date = now() at time zone 'utc'
     WHERE p.id = p_id
     RETURNING id INTO v_updated_poll_id;
@@ -49,7 +51,8 @@ BEGIN
     INTO public.poll_options (text, value, poll_id)
     SELECT o.text, o.value, v_updated_poll_id
     FROM options o
-    WHERE o.id IS NULL OR o.id = 0;
+    WHERE o.id IS NULL
+       OR o.id = 0;
 
     RETURN v_updated_poll_id;
 END;

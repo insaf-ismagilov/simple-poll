@@ -7,6 +7,7 @@ namespace SimplePoll.Domain.Entities
 	{
 		public string Title { get; set; }
 		public PollStatus Status { get; set; }
+		public PollType Type { get; set; }
 		public ICollection<PollOption> Options { get; set; }
 	}
 }

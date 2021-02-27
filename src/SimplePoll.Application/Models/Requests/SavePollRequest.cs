@@ -18,6 +18,7 @@ namespace SimplePoll.Application.Models.Requests
 	{
 		public string Title { get; set; }
 		public PollStatus Status { get; set; }
+		public PollType Type { get; set; }
 	}
 
 	public class SavePollOptionRequest

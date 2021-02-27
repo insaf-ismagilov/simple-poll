@@ -3,6 +3,7 @@ DROP FUNCTION IF EXISTS public.polls_create;
 CREATE OR REPLACE FUNCTION public.polls_create(
     p_title text,
     p_status int,
+    p_type int,
     p_options jsonb
 )
     RETURNS int
@@ -12,8 +13,8 @@ $$
 DECLARE
     v_new_poll_id int;
 BEGIN
-    INSERT INTO public.polls (title, status)
-    VALUES (p_title, p_status)
+    INSERT INTO public.polls (title, status, type)
+    VALUES (p_title, p_status, p_type)
     RETURNING id INTO v_new_poll_id;
 
     INSERT

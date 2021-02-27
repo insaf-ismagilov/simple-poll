@@ -8,6 +8,8 @@ namespace SimplePoll.Application.Validators
 		public SavePollRequestValidator()
 		{
 			RuleFor(x => x.Title).NotEmpty();
+			RuleFor(x => x.Status).IsInEnum();
+			RuleFor(x => x.Type).IsInEnum();
 		}
 	}
 

@@ -22,6 +22,7 @@ namespace SimplePoll.Infrastructure.DataAccess.Repositories
 			return _databaseRepository.GetAsync<int>(Functions.PollRepository.Create,
 				DbParameterHelper.Create(nameof(poll.Title), poll.Title),
 				DbParameterHelper.Create(nameof(poll.Status), poll.Status),
+				DbParameterHelper.Create(nameof(poll.Type), poll.Type),
 				DbParameterHelper.CreateJsonb(nameof(poll.Options), poll.Options));
 		}
 
@@ -31,6 +32,7 @@ namespace SimplePoll.Infrastructure.DataAccess.Repositories
 				DbParameterHelper.Create(nameof(poll.Id), poll.Id),
 				DbParameterHelper.Create(nameof(poll.Title), poll.Title),
 				DbParameterHelper.Create(nameof(poll.Status), poll.Status),
+				DbParameterHelper.Create(nameof(poll.Type), poll.Type),
 				DbParameterHelper.CreateJsonb(nameof(poll.Options), poll.Options));
 		}
 
@@ -62,6 +64,7 @@ namespace SimplePoll.Infrastructure.DataAccess.Repositories
 						Id = pollRecord.Id,
 						Title = pollRecord.Title,
 						Status = pollRecord.Status,
+						Type = pollRecord.Type,
 						Options = new List<PollOption>()
 					};
 
