@@ -15,7 +15,8 @@ namespace SimplePoll.Api.Configurations
 				new UserProfile(),
 				new Profiles.UserProfile(),
 				new PollProfile(),
-				new PollAnswerProfile()
+				new PollAnswerProfile(),
+				new PollPreviewProfile()
 			};
 
 			var mapper = new MapperConfiguration(c => c.AddProfiles(profiles)).CreateMapper();

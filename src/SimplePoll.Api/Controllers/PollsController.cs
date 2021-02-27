@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,15 +15,19 @@ namespace SimplePoll.Api.Controllers
 	public class PollsController : ApiControllerBase
 	{
 		private readonly IPollService _pollService;
+		private readonly IPollPreviewService _pollPreviewService;
 
-		public PollsController(IPollService pollService)
+		public PollsController(
+			IPollService pollService,
+			IPollPreviewService pollPreviewService)
 		{
 			_pollService = pollService;
+			_pollPreviewService = pollPreviewService;
 		}
 
 		[HttpGet("{id}")]
 		[ProducesResponseType(typeof(Poll), StatusCodes.Status200OK)]
-		[ProducesResponseType(StatusCodes.Status400BadRequest)]
+		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		public async Task<IActionResult> GetById(int id)
 		{
 			var result = await _pollService.GetByIdAsync(id);
@@ -33,9 +38,8 @@ namespace SimplePoll.Api.Controllers
 		}
 
 		[HttpGet]
-		[ProducesResponseType(typeof(Poll), StatusCodes.Status200OK)]
-		[ProducesResponseType(StatusCodes.Status400BadRequest)]
-		public async Task<IActionResult> GetById()
+		[ProducesResponseType(typeof(ICollection<Poll>), StatusCodes.Status200OK)]
+		public async Task<IActionResult> GetAll()
 		{
 			var result = await _pollService.GetAllAsync();
 
@@ -63,6 +67,18 @@ namespace SimplePoll.Api.Controllers
 			var result = await _pollService.UpdateAsync(request);
 
 			return MakeResponse(result);
+		}
+
+		[HttpGet("{id}/preview")]
+		[ProducesResponseType(typeof(Poll), StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status404NotFound)]
+		public async Task<IActionResult> GetByIdPreview(int id)
+		{
+			var pollPreview = await _pollPreviewService.GetByIdAsync(id);
+			if (pollPreview == null)
+				return NotFound();
+
+			return Ok(pollPreview);
 		}
 	}
 }
