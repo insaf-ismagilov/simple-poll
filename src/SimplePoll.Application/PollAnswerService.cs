@@ -42,15 +42,19 @@ namespace SimplePoll.Application
 			var pollAnswerToAdd = _mapper.Map<PollAnswer>(request);
 
 			var existingPoll = await _pollService.GetByIdAsync(request.PollId);
-			
-			if(existingPoll == null)
+
+			if (existingPoll == null)
 				return ServiceResponse<PollAnswer>.Error($"Poll <{pollAnswerToAdd.PollId}> not found.");
-			
-			if(existingPoll.Status != PollStatus.Active)
+
+			if (existingPoll.Status != PollStatus.Active)
 				return ServiceResponse<PollAnswer>.Error($"Poll <{pollAnswerToAdd.PollId}> is not active.");
 
 			if (existingPoll.Options.All(x => x.Id != pollAnswerToAdd.PollOptionId))
 				return ServiceResponse<PollAnswer>.Error($"Poll <{pollAnswerToAdd.PollId}> does not contain option <{pollAnswerToAdd.PollOptionId}>");
+
+			var pollAnswers = await GetByPollIdAsync(existingPoll.Id);
+			if (pollAnswers.Any(x => x.UserId == pollAnswerToAdd.UserId))
+				return ServiceResponse<PollAnswer>.Error($"User <{pollAnswerToAdd.UserId}> has already answered the Poll <{pollAnswerToAdd.PollId}>.");
 
 			var newId = await _pollAnswerRepository.AddAnswerAsync(pollAnswerToAdd);
 
