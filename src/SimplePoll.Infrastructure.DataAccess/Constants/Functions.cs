@@ -22,6 +22,7 @@
 		{
 			public const string Add = "public.poll_answers_add";
 			public const string GetById = "public.poll_answers_get_by_id";
+			public const string GetByPollId = "public.poll_answers_get_by_poll_id";
 		}
 	}
 }

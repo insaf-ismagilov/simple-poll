@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using SimplePoll.Application.Contracts;
@@ -29,6 +30,11 @@ namespace SimplePoll.Application
 		public Task<PollAnswer> GetByIdAsync(int id)
 		{
 			return _pollAnswerRepository.GetByIdAsync(id);
+		}
+
+		public Task<ICollection<PollAnswer>> GetByPollIdAsync(int pollId)
+		{
+			return _pollAnswerRepository.GetByPollIdAsync(pollId);
 		}
 
 		public async Task<ServiceResponse<PollAnswer>> AddAnswerAsync(AddPollAnswerRequest request)

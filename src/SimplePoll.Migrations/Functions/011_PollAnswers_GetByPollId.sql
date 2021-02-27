@@ -1,6 +1,6 @@
-DROP FUNCTION IF EXISTS public.poll_answers_get_by_id;
+DROP FUNCTION IF EXISTS public.poll_answers_get_by_poll_id;
 
-CREATE OR REPLACE FUNCTION public.poll_answers_get_by_id(p_id int)
+CREATE OR REPLACE FUNCTION public.poll_answers_get_by_poll_id(p_poll_id int)
     RETURNS table
             (
                 id             int,
@@ -17,5 +17,5 @@ SELECT pa.id,
        po.poll_id
 FROM public.poll_answers pa
          INNER JOIN public.poll_options po ON po.id = pa.poll_option_id
-WHERE pa.id = p_id;
+WHERE po.poll_id = p_poll_id;
 $$

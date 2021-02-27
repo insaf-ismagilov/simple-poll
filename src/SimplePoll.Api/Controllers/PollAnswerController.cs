@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SimplePoll.Application;
 using SimplePoll.Application.Contracts;
 using SimplePoll.Application.Models.Requests;
 using SimplePoll.Domain.Entities;
@@ -31,6 +31,16 @@ namespace SimplePoll.Api.Controllers
 				return NotFound();
 
 			return Ok(pollAnswer);
+		}
+
+		[HttpGet]
+		[ProducesResponseType(typeof(ICollection<PollAnswer>), StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status404NotFound)]
+		public async Task<IActionResult> GetByPollId(int pollId)
+		{
+			var result = await _pollAnswerService.GetByPollIdAsync(pollId);
+			
+			return Ok(result);
 		}
 
 		[HttpPost]

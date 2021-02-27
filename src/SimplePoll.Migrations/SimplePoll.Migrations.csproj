@@ -55,6 +55,8 @@
       <EmbeddedResource Include="Functions\009_PollAnswers_Add.sql" />
       <None Remove="Functions\010_PollAnswers_GetById.sql" />
       <EmbeddedResource Include="Functions\010_PollAnswers_GetById.sql" />
+      <None Remove="Functions\011_PollAnswers_GetByPollId.sql" />
+      <EmbeddedResource Include="Functions\011_PollAnswers_GetByPollId.sql" />
     </ItemGroup>
 
     <ItemGroup>
