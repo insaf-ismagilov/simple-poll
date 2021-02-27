@@ -5,6 +5,7 @@ using SimplePoll.Application.Contracts;
 using SimplePoll.Application.Models.Requests;
 using SimplePoll.Domain.Contracts;
 using SimplePoll.Domain.Entities;
+using SimplePoll.Domain.Enums;
 using SimplePoll.Domain.Responses;
 
 namespace SimplePoll.Application
@@ -35,8 +36,14 @@ namespace SimplePoll.Application
 			var pollAnswerToAdd = _mapper.Map<PollAnswer>(request);
 
 			var existingPoll = await _pollService.GetByIdAsync(request.PollId);
+			
+			if(existingPoll == null)
+				return ServiceResponse<PollAnswer>.Error($"Poll <{pollAnswerToAdd.PollId}> not found.");
+			
+			if(existingPoll.Status != PollStatus.Active)
+				return ServiceResponse<PollAnswer>.Error($"Poll <{pollAnswerToAdd.PollId}> is not active.");
 
-			if (existingPoll == null || existingPoll.Options.All(x => x.Id != pollAnswerToAdd.PollOptionId))
+			if (existingPoll.Options.All(x => x.Id != pollAnswerToAdd.PollOptionId))
 				return ServiceResponse<PollAnswer>.Error($"Poll <{pollAnswerToAdd.PollId}> does not contain option <{pollAnswerToAdd.PollOptionId}>");
 
 			var newId = await _pollAnswerRepository.AddAnswerAsync(pollAnswerToAdd);
