@@ -4,6 +4,7 @@ using DbUp;
 using DbUp.Engine;
 using DbUp.Support;
 using Microsoft.Extensions.Configuration;
+using Npgsql;
 
 namespace SimplePoll.Migrations
 {
@@ -21,7 +22,15 @@ namespace SimplePoll.Migrations
 				.AddJsonFile("appsettings.json")
 				.Build();
 
-			var connectionString = configuration.GetConnectionString("SimplePoll");
+			var connectionSettings = new ConnectionSettings();
+			configuration.GetSection(nameof(ConnectionSettings)).Bind(connectionSettings);
+
+			if (bool.TryParse(configuration.GetSection("DropDatabase").Value, out var dropDb) && dropDb)
+			{
+				DropDatabase(connectionSettings);
+			}
+			
+			var connectionString = connectionSettings.DatabaseConnectionString;
 
 			EnsureDatabase.For.PostgresqlDatabase(connectionString);
 
@@ -58,6 +67,25 @@ namespace SimplePoll.Migrations
 			Console.WriteLine("Success!");
 			Console.ResetColor();
 			return 0;
+		}
+
+		private static void DropDatabase(ConnectionSettings connectionSettings)
+		{
+			var defaultDbConnectionString = connectionSettings.DefaultDatabaseConnectionString;
+
+			using var con = new NpgsqlConnection(defaultDbConnectionString);
+			con.Open();
+
+			var dropCommand = new NpgsqlCommand
+			{
+				Connection = con,
+				CommandText = $@"SELECT pg_terminate_backend(pg_stat_activity.pid)
+								FROM pg_stat_activity
+								WHERE pg_stat_activity.datname = '{connectionSettings.Database}';
+								
+								drop database if exists ""{connectionSettings.Database}"";"
+			};
+			dropCommand.ExecuteNonQuery();
 		}
 	}
 }
