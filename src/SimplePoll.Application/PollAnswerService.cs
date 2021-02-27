@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using SimplePoll.Application.Contracts;
 using SimplePoll.Application.Models.Requests;
-using SimplePoll.Domain.Contracts.Repositories;
+using SimplePoll.Domain.Contracts;
 using SimplePoll.Domain.Entities;
 using SimplePoll.Domain.Responses;
 

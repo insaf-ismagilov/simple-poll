@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using SimplePoll.Application;
 using SimplePoll.Application.Contracts;
-using SimplePoll.Domain.Contracts.Repositories;
+using SimplePoll.Domain.Contracts;
 using SimplePoll.Domain.Entities;
 using SimplePoll.Infrastructure.Authorization;
 using SimplePoll.Infrastructure.DataAccess.Repositories;

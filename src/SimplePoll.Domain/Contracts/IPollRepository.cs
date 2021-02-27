@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using SimplePoll.Domain.Entities;
 
-namespace SimplePoll.Domain.Contracts.Repositories
+namespace SimplePoll.Domain.Contracts
 {
 	public interface IPollRepository
 	{

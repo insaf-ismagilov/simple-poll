@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using SimplePoll.Domain.Contracts.Repositories;
+using SimplePoll.Domain.Contracts;
 using SimplePoll.Domain.Entities;
 using SimplePoll.Infrastructure.DataAccess.Constants;
 using SimplePoll.Infrastructure.DataAccess.Data;
