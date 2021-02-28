@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Threading.Tasks;
 using DbUp;
 using DbUp.Engine;
 using DbUp.Support;
@@ -20,10 +21,17 @@ namespace SimplePoll.Migrations
 		{
 			var configuration = new ConfigurationBuilder()
 				.AddJsonFile("appsettings.json")
+				.AddEnvironmentVariables()
 				.Build();
 
 			var connectionSettings = new ConnectionSettings();
 			configuration.GetSection(nameof(ConnectionSettings)).Bind(connectionSettings);
+
+			if (!RepeatTryWaitConnection(connectionSettings))
+			{
+				Console.WriteLine("Connection to the host has failed.");
+				return -1;
+			}
 
 			if (bool.TryParse(configuration.GetSection("DropDatabase").Value, out var dropDb) && dropDb)
 			{
@@ -71,6 +79,7 @@ namespace SimplePoll.Migrations
 
 		private static void DropDatabase(ConnectionSettings connectionSettings)
 		{
+			Console.WriteLine("Dropping database...");
 			var defaultDbConnectionString = connectionSettings.DefaultDatabaseConnectionString;
 
 			using var con = new NpgsqlConnection(defaultDbConnectionString);
@@ -86,6 +95,41 @@ namespace SimplePoll.Migrations
 								drop database if exists ""{connectionSettings.Database}"";"
 			};
 			dropCommand.ExecuteNonQuery();
+			Console.WriteLine("Database was successfully dropped.");
+		}
+
+		private static bool TryWaitConnection(ConnectionSettings connectionSettings)
+		{
+			Console.WriteLine("Trying to connect to the host...");
+			
+			var hostConnectionString = connectionSettings.HostConnectionString;
+
+			try
+			{
+				using var con = new NpgsqlConnection(hostConnectionString);
+				con.Open();
+				Console.WriteLine("Succesful connection to the host has been established.");
+				return true;
+			}
+			catch
+			{
+				return false;
+			}
+		}
+
+		private static bool RepeatTryWaitConnection(ConnectionSettings connectionSettings)
+		{
+			const int tryCount = 2;
+
+			for (var i = 0; i < tryCount; i++)
+			{
+				if (TryWaitConnection(connectionSettings))
+					return true;
+
+				Task.Delay(TimeSpan.FromSeconds(connectionSettings.WaitTimeoutSeconds)).Wait();
+			}
+
+			return false;
 		}
 	}
 }
